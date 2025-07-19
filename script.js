@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [0, 3, 6], // left column
     [1, 4, 7], // middle column
     [2, 5, 8], // right column
-    
+
     [0, 4, 8], // diagonal
     [2, 4, 6], // other diagonal
   ];
@@ -48,4 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return board[a] && board[a] === board[b] && board[a] === board[c];
     });
   }
+
+    resetbtn.addEventListener("click", () => {
+    board = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach((cell) => {
+      cell.textContent = "";
+    });
+    currPlayer = "X";
+    gameactive = true;
+    message.textContent = `Player ${currPlayer}'s turn`;
+  });
+
 });
