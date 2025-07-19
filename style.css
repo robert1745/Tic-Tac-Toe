@@ -43,3 +43,28 @@ h1 {
   font-size: 1rem;
   cursor: pointer;
 }
+
+.dark-theme {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.dark-theme .cell {
+  background-color: #333;
+  border: 2px solid #666;
+}
+
+.dark-theme .cell:hover {
+  background-color: #444;
+}
+
+.dark-theme #message {
+  color: #ddd;
+}
+
+.dark-theme #reset-btn,
+.dark-theme #theme-toggle {
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+}

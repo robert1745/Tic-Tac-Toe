@@ -22,6 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     [0, 4, 8], // diagonal
     [2, 4, 6], // other diagonal
   ];
+  const themeToggle = document.querySelector("#theme-toggle");
+
+    themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+  });
   cells.forEach((cell) => {
     cell.addEventListener("click", (e) => {
       const index = cell.getAttribute("data-index");
