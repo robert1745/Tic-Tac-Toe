@@ -8,20 +8,38 @@ h1 {
   font-size: 2.5rem;
 }
 
-#message {
+#message.light-theme  {
   margin: 20px;
   font-size: 1.2rem;
   color: #333;
+}
+#message.dark-theme  {
+  margin: 20px;
+  font-size: 1.2rem;
+  color: white;
 }
 
 .board {
   display: grid;
   grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
   gap: 5px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 20px auto;
 }
+
+.cell {
+  width: 100px;
+  height: 100px;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid #444;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 
 .cell {
   background-color: #f0f0f0;
@@ -44,27 +62,42 @@ h1 {
   cursor: pointer;
 }
 
-.dark-theme {
-  background-color: #1e1e1e;
+body.light-theme {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.dark-theme .cell {
+#theme-toggle:hover {
+  background-color: #0056b3;
+}
+
+
+body.light-theme .cell {
+  background-color: #fff;
+  color: #222;
+}
+
+body.dark-theme .cell {
   background-color: #333;
-  border: 2px solid #666;
-}
-
-.dark-theme .cell:hover {
-  background-color: #444;
-}
-
-.dark-theme #message {
-  color: #ddd;
-}
-
-.dark-theme #reset-btn,
-.dark-theme #theme-toggle {
-  background-color: #333;
-  color: white;
-  border: 1px solid #666;
+  color: #f0f0f0;
+  border-color: #666;
 }
