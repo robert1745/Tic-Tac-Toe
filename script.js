@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cells = document.querySelectorAll(".cell");
   const resetbtn = document.querySelector("#reset-btn");
   const message = document.querySelector("#message");
+  let scoreX = 0;
+  let scoreO = 0;
+  const scoreXEl = document.querySelector("#score-x");
+  const scoreOEl = document.querySelector("#score-o");
 
   let currPlayer = "X";
   let board = ["", "", "", "", "", "", "", "", ""];
@@ -29,9 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
       board[index] = currPlayer;
       if (checkWinner()) {
         message.textContent = `Player ${currPlayer} wins!`;
+        if (currPlayer === "X") {
+          scoreX++;
+          scoreXEl.textContent = scoreX;
+        } else {
+          scoreO++;
+          scoreOEl.textContent = scoreO;
+        }
         gameactive = false;
         return;
       }
+
       if (!board.includes("")) {
         message.textContent = `Its a draw!`;
         gameactive = false;
@@ -49,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    resetbtn.addEventListener("click", () => {
+  resetbtn.addEventListener("click", () => {
     board = ["", "", "", "", "", "", "", "", ""];
     cells.forEach((cell) => {
       cell.textContent = "";
@@ -58,5 +70,4 @@ document.addEventListener("DOMContentLoaded", () => {
     gameactive = true;
     message.textContent = `Player ${currPlayer}'s turn`;
   });
-
 });
