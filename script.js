@@ -17,13 +17,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const winningCombos = [
     [0, 1, 2],
     [3, 4, 5],
-    [6, 7, 8], // rows
+    [6, 7, 8], 
     [0, 3, 6],
     [1, 4, 7],
-    [2, 5, 8], // columns
+    [2, 5, 8], 
     [0, 4, 8],
-    [2, 4, 6], // diagonals
+    [2, 4, 6], 
   ];
+
+  function updateTurnIndicator() {
+    const turnX = document.getElementById("turn-x");
+    const turnO = document.getElementById("turn-o");
+    if (currPlayer === "X") {
+      turnX.classList.add("active");
+      turnO.classList.remove("active");
+    } else {
+      turnO.classList.add("active");
+      turnX.classList.remove("active");
+    }
+  }
+
+  updateTurnIndicator(); 
 
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
@@ -50,10 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       currPlayer = "O";
+      updateTurnIndicator();
       message.textContent = "AI is thinking...";
       setTimeout(() => {
         makeAIMove();
         currPlayer = "X";
+        updateTurnIndicator(); 
       }, 500);
     });
   });
@@ -64,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currPlayer = "X";
     message.textContent = "Player X's turn";
     cells.forEach((cell) => (cell.textContent = ""));
+    updateTurnIndicator(); 
   });
 
   function makeMove(index, player) {
@@ -114,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     playerOScoreEl.textContent = playerOScore;
     drawScoreEl.textContent = drawScore;
   }
+
   const themeToggle = document.getElementById("theme-toggle");
 
   document.body.classList.add("light-theme");

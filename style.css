@@ -1,3 +1,20 @@
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --cell-bg-color: #f0f0f0;
+  --cell-hover-color: #d0d0d0; 
+  --accent-color: #007bff;
+}
+
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #fff;
+  --cell-bg-color: #1e1e1e;
+  --cell-hover-color: #333333; 
+  --accent-color: #4fc3f7;
+}
+
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -8,12 +25,13 @@ h1 {
   font-size: 2.5rem;
 }
 
-#message.light-theme  {
+#message.light-theme {
   margin: 20px;
   font-size: 1.2rem;
   color: #333;
 }
-#message.dark-theme  {
+
+#message.dark-theme {
   margin: 20px;
   font-size: 1.2rem;
   color: white;
@@ -40,20 +58,20 @@ h1 {
   transition: background-color 0.3s, color 0.3s;
 }
 
-
-.cell {
-  background-color: #f0f0f0;
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 2px solid #999;
-  transition: background-color 0.3s;
+.cell:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
 }
+
 
 .cell:hover {
   background-color: #e0e0e0;
+}
+
+.cell:hover:empty {
+  cursor: pointer;
+  background-color: var(--cell-hover-color);
+  transition: background-color 0.3s ease;
 }
 
 #reset-btn {
@@ -100,4 +118,30 @@ body.dark-theme .cell {
   background-color: #333;
   color: #f0f0f0;
   border-color: #666;
+}
+
+#turn-indicator {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.turn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: var(--cell-bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: bold;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+.turn.active {
+  background-color: var(--accent-color);
+  color: #fff;
+  transform: scale(1.1);
+  opacity: 1;
+  border: 2px solid #fff;
 }
